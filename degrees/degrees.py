@@ -99,6 +99,8 @@ def shortest_path(source, target):
 
     If no possible path, returns None.
     """
+    if source == target:
+        return []
     # Initialize frontier to the source person's movies
     frontier = QueueFrontier()
     source_movies = people[source]['movies']
