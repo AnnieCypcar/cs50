@@ -12,10 +12,12 @@ people = {}
 # Maps movie_ids to a dictionary of: title, year, stars (a set of person_ids)
 movies = {}
 
+
 class Node():
     def __init__(self, state, parent):
         self.state = state
         self.parent = parent
+
 
 def load_data(directory):
     """
@@ -72,14 +74,6 @@ def main():
     target = person_id_for_name(input("Name: "))
     if target is None:
         sys.exit("Person not found.")
-    print(source, target)
-    # source = '129'
-    # target = '163'
-    # source = '705'
-    # 104257 - 193, 197, 102
-    # 112384 - 158, 200, 641
-    # source = '193'
-    # target = '200'
     path = shortest_path(source, target)
     print(path)
     if path is None:
