@@ -43,7 +43,7 @@ def actions(board):
     for i in range(len(board)):
         for j in range(len(board[0])):
             if board[i][j] == EMPTY:
-                result.add((i,j))
+                result.add((i, j))
     return result
 
 
@@ -92,6 +92,7 @@ def winner(board):
     # no winner / tie
     return None
 
+
 def terminal(board):
     """
     Returns True if game is over, False otherwise.
@@ -121,6 +122,7 @@ def utility(board):
     else:
         return 0
     
+
 def get_max_value(board):
     v = float('-inf')
     if terminal(board):
@@ -129,6 +131,7 @@ def get_max_value(board):
         v = max(v, get_min_value(result(board, action)))
     return v
 
+
 def get_min_value(board):
     v = float('inf')
     if terminal(board):
@@ -136,6 +139,7 @@ def get_min_value(board):
     for action in actions(board):
         v = min(v, get_max_value(result(board, action)))
     return v
+
 
 def minimax(board):
     """
