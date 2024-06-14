@@ -254,11 +254,8 @@ class MinesweeperAI():
         for x, y in neighbors:
             # verify the cell is in bounds
             if self.is_cell_in_bounds((x, y)):
-                # # if there are no neighboring mines, we can add all neighboring cells to the safes
-                if count == 0:
-                    self.mark_safe((x, y))
                 if (x, y) in self.mines:
-                    # otherwise, update number of mines if found and decrease the mines count
+                    # update number of mines if found and decrease the mines count
                     known_mines -= 1
                 elif (x, y) not in self.safes:
                     # if the cell is not a known safe or mine, mark it unconfirmed
