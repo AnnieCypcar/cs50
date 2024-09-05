@@ -207,6 +207,7 @@ class CrosswordCreator():
         The first value in the list, for example, should be the one
         that rules out the fewest values among the neighbors of `var`.
         """
+        # optimize search by choosing values more likely to solve the puzzle
         values = {}
         variables = self.domains[var]
         neighbors = self.crossword.neighbors(var)
@@ -216,9 +217,12 @@ class CrosswordCreator():
             else:
                 count = 0
                 for neighbor in neighbors:
+                    # count the number of neighbor domains containing the variable
                     if variable in self.domains[neighbor]:
                         count = count + 1
                 values[variable] = count   
+        # order the list of variables by least constraining value
+        # leaving the most opportunity for finding a solution with the other values
         sorted_list_of_values = [item[0]
                                  for item in sorted(values.items(), key=lambda item: item[1])]  
 
